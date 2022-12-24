@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/drawable/bg_corner_btn.xml" value="0.117" />
         <entry key="app/src/main/res/drawable/conor_background.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/corner_background.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/corner_button_background.xml" value="0.117" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.117" />
         <entry key="app/src/main/res/drawable/ic_remove.xml" value="0.117" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
