@@ -2,26 +2,31 @@ package com.example.food_list.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Display
 import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.food_list.FoodApplication
 import com.example.food_list.MainActivityContract
 import com.example.food_list.R
 import com.example.food_list.databinding.ActivityMainBinding
 import com.example.food_list.model.Food
 import com.example.food_list.viewmodel.MainViewModel
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainActivityContract.ItemListener {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainActivityContract.ViewModel
+
+    @Inject
+    lateinit var viewModel: MainActivityContract.ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as FoodApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setupToolbar()
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
             .apply {
                 rvFoodList.apply {
@@ -75,7 +80,7 @@ class MainActivity : AppCompatActivity(), MainActivityContract.ItemListener {
         }
     }
 
-    private fun updateUi(foodList: List<Food>) {
+    private fun updateUi(foodList: List<MainActivityContract.DisplayItem>) {
         if (foodList.isEmpty()) return
 
         binding.rvFoodList.adapter = FoodAdapter(this).apply { setData(foodList) }

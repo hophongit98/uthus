@@ -7,5 +7,6 @@ import com.example.food_list.model.Food
  * date 24/12/2022.
  */
 interface FoodRepository {
+    suspend fun getFoodList(): List<Food>
     suspend fun insertFoodList(foods: List<Food>)
 }

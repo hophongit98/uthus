@@ -1,5 +1,6 @@
 package com.example.food_list.view
 
+import android.view.Display
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -14,7 +15,7 @@ import com.example.food_list.model.Food
  */
 class FoodAdapter(private val listener: MainActivityContract.ItemListener) : RecyclerView.Adapter<FoodViewHolder>() {
 
-    private val items = mutableListOf<Food>()
+    private val items = mutableListOf<MainActivityContract.DisplayItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         return FoodViewHolder(ItemFoodBinding.inflate(LayoutInflater.from(parent.context), parent, false), listener)
@@ -29,7 +30,7 @@ class FoodAdapter(private val listener: MainActivityContract.ItemListener) : Rec
 
     override fun getItemCount() = items.size
 
-    fun setData(data: List<Food>) {
+    fun setData(data: List<MainActivityContract.DisplayItem>) {
         val diffResult = DiffUtil.calculateDiff(FoodComparator(data, items))
         diffResult.dispatchUpdatesTo(this)
 

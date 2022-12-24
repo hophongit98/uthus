@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModel as BaseViewModel
 interface MainActivityContract {
 
     abstract class ViewModel: BaseViewModel() {
-        abstract val onUiChange: LiveData<List<Food>>
+        abstract val onUiChange: LiveData<List<DisplayItem>>
 
         abstract fun onCheckBoxClicked(itemId: String, isChecked: Boolean)
         abstract fun onBtnAddClicked(itemId: String, count: Short)
@@ -24,4 +24,9 @@ interface MainActivityContract {
         fun onBtnAddClicked(itemId: String, count: Short)
         fun onBtnRemoveClicked(itemId: String, count: Short)
     }
+
+    data class DisplayItem(
+        val food: Food,
+        var isChecked: Boolean
+    )
 }
