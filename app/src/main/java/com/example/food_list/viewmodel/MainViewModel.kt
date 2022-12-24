@@ -44,4 +44,8 @@ class MainViewModel : MainActivityContract.ViewModel() {
             _onUiChange.value = foodItems
         }
     }
+
+    override fun onBtnSaveClicked() {
+
+    }
 }

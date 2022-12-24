@@ -3,5 +3,6 @@
     <string name="kcal">kcal</string>
     <string name="out_of_date">Out of Date</string>
     <string name="expires_in">Expires in: %s</string>
+    <string name="save">Save</string>
 
 </resources>

@@ -2,6 +2,8 @@ package com.example.food_list.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +20,8 @@ class MainActivity : AppCompatActivity(), MainActivityContract.ItemListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        setupToolbar()
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
             .apply {
                 rvFoodList.apply {
@@ -43,6 +46,27 @@ class MainActivity : AppCompatActivity(), MainActivityContract.ItemListener {
 
     override fun onBtnRemoveClicked(itemId: String, count: Short) {
         viewModel.onBtnRemoveClicked(itemId, count)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_item, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_save -> {
+            viewModel.onBtnSaveClicked()
+            true
+        }
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun setupToolbar() {
+        supportActionBar?.title = ""
     }
 
     private fun observeViewModel() {

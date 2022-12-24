@@ -16,6 +16,7 @@ interface MainActivityContract {
         abstract fun onCheckBoxClicked(itemId: String, isChecked: Boolean)
         abstract fun onBtnAddClicked(itemId: String, count: Short)
         abstract fun onBtnRemoveClicked(itemId: String, count: Short)
+        abstract fun onBtnSaveClicked()
     }
 
     interface ItemListener {
