@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">food_list</string>
+    <string name="app_name">Food Application</string>
+    <string name="kcal">kcal</string>
+    <string name="out_of_date">Out of Date</string>
+    <string name="expires_in">Expires in: %s</string>
+
 </resources>

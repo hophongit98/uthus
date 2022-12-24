@@ -15,12 +15,14 @@ import com.example.food_list.model.Food
 class FoodAdapter(private val listener: MainActivityContract.ItemListener) : RecyclerView.Adapter<FoodViewHolder>() {
 
     private val items = mutableListOf<Food>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         return FoodViewHolder(ItemFoodBinding.inflate(LayoutInflater.from(parent.context), parent, false), listener)
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
         if (itemCount > position && position != RecyclerView.NO_POSITION) {
+            holder.stopCountdownExpiredTime()
             holder.bind(items[position])
         }
     }

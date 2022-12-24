@@ -1,5 +1,8 @@
 package com.example.food_list.utils
 
+import com.example.food_list.FoodApplication
+import com.example.food_list.R
+
 /**
  * Created by Phillip Truong
  * date 24/12/2022.
@@ -7,6 +10,6 @@ package com.example.food_list.utils
 object StringUtils {
 
     fun formatCaloriesString(calories: Short): String {
-        return "$calories kcal"
+        return "$calories ${FoodApplication.instance.resources.getString(R.string.kcal)}"
     }
 }

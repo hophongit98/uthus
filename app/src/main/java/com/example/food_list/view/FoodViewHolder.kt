@@ -1,11 +1,16 @@
 package com.example.food_list.view
 
+import android.os.CountDownTimer
+import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.example.food_list.FoodApplication
 import com.example.food_list.MainActivityContract
+import com.example.food_list.R
 import com.example.food_list.databinding.ItemFoodBinding
 import com.example.food_list.model.Food
+import com.example.food_list.utils.DateUtils
 import com.example.food_list.utils.StringUtils
 
 /**
@@ -13,7 +18,8 @@ import com.example.food_list.utils.StringUtils
  * date 24/12/2022.
  */
 class FoodViewHolder(private val binding: ItemFoodBinding, private val itemListener: MainActivityContract.ItemListener) : RecyclerView.ViewHolder(binding.root) {
-    var number: Short = 0
+    private var number: Short = 0
+    private var timer: CountDownTimer? = null
 
     fun bind(item: Food) {
         with(binding) {
@@ -25,6 +31,7 @@ class FoodViewHolder(private val binding: ItemFoodBinding, private val itemListe
             groupAction.isVisible = item.isChecked
             setPerformAction(btnRemove, item.count > 1)
             setPerformAction(btnAdd, true)
+            startCountdownExpiredTime(item.expiry)
 
             tvCount.text = "${item.count}"
 
@@ -55,5 +62,23 @@ class FoodViewHolder(private val binding: ItemFoodBinding, private val itemListe
             isClickable = isAllowAction
             isFocusable = isAllowAction
         }
+    }
+
+    private fun startCountdownExpiredTime(date: Long) {
+        timer = object : CountDownTimer(date - System.currentTimeMillis(), 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                binding.tvExpires.text = FoodApplication.instance.resources.getString(R.string.expires_in, DateUtils.getDurationBreakdown(millisUntilFinished))
+            }
+
+            override fun onFinish() {
+                binding.tvExpires.text = FoodApplication.instance.resources.getString(R.string.out_of_date)
+            }
+        }
+        timer?.start()
+    }
+
+    fun stopCountdownExpiredTime() {
+        timer?.cancel()
     }
 }

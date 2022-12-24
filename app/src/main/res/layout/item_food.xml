@@ -20,10 +20,10 @@
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbChecked"
                 android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:checked="false"
+                android:layout_height="60dp"
                 android:buttonTint="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/tvCalories"
+                android:checked="false"
+                app:layout_constraintBottom_toBottomOf="@+id/tvExpires"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +31,6 @@
                 android:id="@+id/tvName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,16 +61,29 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvQuantity"
                 tools:text="115 kcal" />
 
+            <TextView
+                android:id="@+id/tvExpires"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/red"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="@+id/tvName"
+                app:layout_constraintStart_toStartOf="@+id/tvName"
+                app:layout_constraintTop_toBottomOf="@+id/tvCalories"
+                tools:text="Expries in: 11:05:56, 11 days" />
+
             <ImageButton
                 android:id="@+id/btnRemove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/corner_button_background"
                 android:src="@drawable/ic_remove"
                 app:layout_constraintEnd_toStartOf="@id/tvCount"
                 app:layout_constraintStart_toStartOf="@+id/tvName"
-                app:layout_constraintTop_toBottomOf="@+id/tvCalories" />
+                app:layout_constraintTop_toBottomOf="@+id/tvExpires" />
 
             <TextView
                 android:id="@+id/tvCount"
