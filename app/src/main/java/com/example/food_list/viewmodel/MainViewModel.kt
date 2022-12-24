@@ -2,9 +2,12 @@ package com.example.food_list.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.food_list.MainActivityContract
 import com.example.food_list.model.DataProvider
 import com.example.food_list.model.Food
+import com.example.food_list.repository.FoodRepository
+import kotlinx.coroutines.launch
 
 /**
  * Created by Phillip Truong
@@ -16,6 +19,7 @@ class MainViewModel : MainActivityContract.ViewModel() {
     override val onUiChange: LiveData<List<Food>> = _onUiChange
 
     private val foodItems = mutableListOf<Food>()
+    private lateinit var foodRepository: FoodRepository
 
     init {
         if (foodItems.isEmpty()) {
@@ -46,6 +50,8 @@ class MainViewModel : MainActivityContract.ViewModel() {
     }
 
     override fun onBtnSaveClicked() {
-
+        viewModelScope.launch {
+            foodRepository.insertFoodList(foodItems)
+        }
     }
 }
