@@ -18,16 +18,16 @@ object DataProvider {
             Food("8", "Capri-Sun", "8 fl. oz. (240 ml)", 199, 1690848000000, 1),
             Food("9", "Carrot Juice", "8 fl. oz. (240 ml)", 239, 1693526400000, 1),
             Food("10", "Chamomile Tea", "8 fl. oz. (240 ml)", 339, 1696118400000, 1),
-            Food("11", "Lemon Tea", "8 fl. oz. (240 ml)", 339, 1696118400000, 1),
+            Food("11", "Lemon Tea", "8 fl. oz. (240 ml)", 339, 1671781656000, 1),
             Food("12", "Blackberry Tea", "8 fl. oz. (240 ml)", 339, 1696118400000, 1),
-            Food("13", "Dragon fruit Tea", "8 fl. oz. (240 ml)", 339, 1696118400000, 1),
-            Food("14", "Orange Tea", "8 fl. oz. (240 ml)", 339, 1696118400000, 1),
+            Food("13", "Dragon fruit Tea", "8 fl. oz. (240 ml)", 339, 1671781656000, 1),
+            Food("14", "Orange Tea", "8 fl. oz. (240 ml)", 339, 1671781656000, 1),
             Food("15", "Apple Tea", "8 fl. oz. (240 ml)", 339, 1696118400000, 1),
-            Food("16", "Boysenberry Tea", "8 fl. oz. (240 ml)", 339, 1696118400000, 1),
-            Food("17", "Carrot Tea", "8 fl. oz. (240 ml)", 339, 1696118400000, 1),
+            Food("16", "Boysenberry Tea", "8 fl. oz. (240 ml)", 339, 1671781656000, 1),
+            Food("17", "Carrot Tea", "8 fl. oz. (240 ml)", 339, 1671781656000, 1),
             Food("18", "Banana Tea", "8 fl. oz. (240 ml)", 339, 1696118400000, 1),
-            Food("19", "Aloe Tea", "8 fl. oz. (240 ml)", 339, 1696118400000, 1),
-            Food("20", "Acai Tea", "8 fl. oz. (240 ml)", 339, 1696118400000, 1),
+            Food("19", "Aloe Tea", "8 fl. oz. (240 ml)", 339, 1671781656000, 1),
+            Food("20", "Acai Tea", "8 fl. oz. (240 ml)", 339, 1671781656000, 1),
         )
     }
 }

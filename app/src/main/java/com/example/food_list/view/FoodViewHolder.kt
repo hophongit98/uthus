@@ -2,6 +2,7 @@ package com.example.food_list.view
 
 import android.os.CountDownTimer
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.food_list.FoodApplication
@@ -34,12 +35,14 @@ class FoodViewHolder(private val binding: ItemFoodBinding, private val itemListe
             tvCount.text = "${item.food.count}"
 
             cbChecked.setOnClickListener {
+                item.isChecked = cbChecked.isChecked
                 groupAction.isVisible = cbChecked.isChecked
                 itemListener.onCheckBoxClicked(item.food.id, cbChecked.isChecked)
             }
 
             btnAdd.setOnClickListener {
                 tvCount.text = "${++number}"
+                item.food.count = number
                 itemListener.onBtnAddClicked(item.food.id, number)
                 setPerformAction(btnRemove, true)
             }
@@ -47,6 +50,7 @@ class FoodViewHolder(private val binding: ItemFoodBinding, private val itemListe
             btnRemove.setOnClickListener {
                 if (number > 1) {
                     tvCount.text = "${--number}"
+                    item.food.count = number
                     itemListener.onBtnRemoveClicked(item.food.id, number)
                 }
                 setPerformAction(btnRemove, number > 1)
@@ -70,7 +74,10 @@ class FoodViewHolder(private val binding: ItemFoodBinding, private val itemListe
             }
 
             override fun onFinish() {
-                binding.tvExpires.text = FoodApplication.instance.resources.getString(R.string.out_of_date)
+                binding.tvExpires.apply{
+                    text = FoodApplication.instance.resources.getString(R.string.out_of_date)
+                    setTextColor(ContextCompat.getColor(context, R.color.red))
+                }
             }
         }
         timer?.start()

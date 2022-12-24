@@ -36,21 +36,18 @@ class MainViewModel @Inject constructor(private val foodRepository: FoodReposito
     override fun onCheckBoxClicked(itemId: String, isChecked: Boolean) {
         foodItems.find { it.food.id == itemId }?.let {
             it.isChecked = isChecked
-            _onUiChange.value = foodItems
         }
     }
 
     override fun onBtnAddClicked(itemId: String, count: Short) {
         foodItems.find { it.food.id == itemId }?.let {
             it.food.count = count
-            _onUiChange.value = foodItems
         }
     }
 
     override fun onBtnRemoveClicked(itemId: String, count: Short) {
         foodItems.find { it.food.id == itemId }?.let {
             it.food.count = count
-            _onUiChange.value = foodItems
         }
     }
 
