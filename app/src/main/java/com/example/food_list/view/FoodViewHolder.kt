@@ -59,10 +59,12 @@ class FoodViewHolder(private val binding: ItemFoodBinding, private val itemListe
     }
 
     private fun setPerformAction(view: View, isAllowAction: Boolean) {
-        with(view) {
-            isEnabled = isAllowAction
-            isClickable = isAllowAction
-            isFocusable = isAllowAction
+        if (view.isEnabled != isAllowAction) {
+            with(view) {
+                isEnabled = isAllowAction
+                isClickable = isAllowAction
+                isFocusable = isAllowAction
+            }
         }
     }
 
@@ -70,16 +72,22 @@ class FoodViewHolder(private val binding: ItemFoodBinding, private val itemListe
         timer = object : CountDownTimer(date - System.currentTimeMillis(), 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
-                binding.tvExpires.apply{
-                    text = FoodApplication.instance.resources.getString(R.string.expires_in, DateUtils.getDurationBreakdown(millisUntilFinished))
-                    setTextColor(ContextCompat.getColor(context, R.color.blue))
+                with(binding) {
+                    tvExpires.apply{
+                        text = FoodApplication.instance.resources.getString(R.string.expires_in, DateUtils.getDurationBreakdown(millisUntilFinished))
+                        setTextColor(ContextCompat.getColor(context, R.color.blue))
+                    }
+                    setPerformAction(cbChecked, true)
                 }
             }
 
             override fun onFinish() {
-                binding.tvExpires.apply{
-                    text = FoodApplication.instance.resources.getString(R.string.out_of_date)
-                    setTextColor(ContextCompat.getColor(context, R.color.red))
+                with(binding){
+                    tvExpires.apply{
+                        text = FoodApplication.instance.resources.getString(R.string.out_of_date)
+                        setTextColor(ContextCompat.getColor(context, R.color.red))
+                    }
+                    setPerformAction(cbChecked, false)
                 }
             }
         }
