@@ -13,11 +13,11 @@ import com.example.food_list.utils.StringUtils
  * date 24/12/2022.
  */
 class FoodViewHolder(private val binding: ItemFoodBinding, private val itemListener: MainActivityContract.ItemListener) : RecyclerView.ViewHolder(binding.root) {
-    var count: Short = 0
+    var number: Short = 0
 
     fun bind(item: Food) {
         with(binding) {
-            count = item.count
+            number = item.count
             tvName.text = item.name
             tvCalories.text = StringUtils.formatCaloriesString(item.calories)
             tvQuantity.text = item.quantity
@@ -28,23 +28,23 @@ class FoodViewHolder(private val binding: ItemFoodBinding, private val itemListe
 
             tvCount.text = "${item.count}"
 
-            cbChecked.setOnCheckedChangeListener { _, isChecked ->
-                groupAction.isVisible = isChecked
-                itemListener.onCheckBoxClicked(item.id, isChecked)
+            cbChecked.setOnClickListener {
+                groupAction.isVisible = cbChecked.isChecked
+                itemListener.onCheckBoxClicked(item.id, cbChecked.isChecked)
             }
 
             btnAdd.setOnClickListener {
-                tvCount.text = "${++count}"
-                itemListener.onBtnAddClicked(item.id, count)
+                tvCount.text = "${++number}"
+                itemListener.onBtnAddClicked(item.id, number)
                 setPerformAction(btnRemove, true)
             }
 
             btnRemove.setOnClickListener {
-                if (count > 1) {
-                    tvCount.text = "${--count}"
-                    itemListener.onBtnRemoveClicked(item.id, count)
+                if (number > 1) {
+                    tvCount.text = "${--number}"
+                    itemListener.onBtnRemoveClicked(item.id, number)
                 }
-                setPerformAction(btnRemove, count > 1)
+                setPerformAction(btnRemove, number > 1)
             }
         }
     }

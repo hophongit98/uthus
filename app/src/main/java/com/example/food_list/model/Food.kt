@@ -10,6 +10,6 @@ data class Food(
     val quantity: String,
     val calories: Short,
     val expiry: Long,
-    val isChecked: Boolean,
-    val count: Short
+    var isChecked: Boolean,
+    var count: Short
 )
