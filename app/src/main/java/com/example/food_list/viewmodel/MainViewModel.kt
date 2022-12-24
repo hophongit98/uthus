@@ -1,5 +1,6 @@
 package com.example.food_list.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.food_list.MainActivityContract
@@ -19,15 +20,15 @@ class MainViewModel : MainActivityContract.ViewModel() {
         _onUiChange.value = DataProvider.provideDummyData()
     }
 
-    override fun onCheckBoxClicked() {
-        TODO("Not yet implemented")
+    override fun onCheckBoxClicked(itemId: String, isChecked: Boolean) {
+        Log.d("Phong", "onCheckBoxClicked - id=$itemId, isChecked=$isChecked")
     }
 
-    override fun onBtnAddClicked() {
-        TODO("Not yet implemented")
+    override fun onBtnAddClicked(itemId: String, count: Short) {
+
     }
 
-    override fun onBtnRemoveClicked() {
-        TODO("Not yet implemented")
+    override fun onBtnRemoveClicked(itemId: String, count: Short) {
+
     }
 }

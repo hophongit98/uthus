@@ -13,8 +13,14 @@ interface MainActivityContract {
     abstract class ViewModel: BaseViewModel() {
         abstract val onUiChange: LiveData<List<Food>>
 
-        abstract fun onCheckBoxClicked()
-        abstract fun onBtnAddClicked()
-        abstract fun onBtnRemoveClicked()
+        abstract fun onCheckBoxClicked(itemId: String, isChecked: Boolean)
+        abstract fun onBtnAddClicked(itemId: String, count: Short)
+        abstract fun onBtnRemoveClicked(itemId: String, count: Short)
+    }
+
+    interface ItemListener {
+        fun onCheckBoxClicked(itemId: String, isChecked: Boolean)
+        fun onBtnAddClicked(itemId: String, count: Short)
+        fun onBtnRemoveClicked(itemId: String, count: Short)
     }
 }

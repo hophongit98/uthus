@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.food_list.MainActivityContract
 import com.example.food_list.databinding.ItemFoodBinding
 import com.example.food_list.model.Food
 
@@ -11,11 +12,11 @@ import com.example.food_list.model.Food
  * Created by Phillip Truong
  * date 24/12/2022.
  */
-class FoodAdapter : RecyclerView.Adapter<FoodViewHolder>() {
+class FoodAdapter(private val listener: MainActivityContract.ItemListener) : RecyclerView.Adapter<FoodViewHolder>() {
 
     private val items = mutableListOf<Food>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
-        return FoodViewHolder(ItemFoodBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return FoodViewHolder(ItemFoodBinding.inflate(LayoutInflater.from(parent.context), parent, false), listener)
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
