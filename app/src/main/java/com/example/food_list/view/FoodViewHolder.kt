@@ -70,7 +70,10 @@ class FoodViewHolder(private val binding: ItemFoodBinding, private val itemListe
         timer = object : CountDownTimer(date - System.currentTimeMillis(), 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
-                binding.tvExpires.text = FoodApplication.instance.resources.getString(R.string.expires_in, DateUtils.getDurationBreakdown(millisUntilFinished))
+                binding.tvExpires.apply{
+                    text = FoodApplication.instance.resources.getString(R.string.expires_in, DateUtils.getDurationBreakdown(millisUntilFinished))
+                    setTextColor(ContextCompat.getColor(context, R.color.blue))
+                }
             }
 
             override fun onFinish() {
